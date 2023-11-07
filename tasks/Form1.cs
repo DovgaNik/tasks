@@ -1,4 +1,6 @@
-namespace DOVHANProject
+using System.Xml;
+
+namespace tasks
 {
     public partial class Form1 : Form
     {
@@ -6,6 +8,9 @@ namespace DOVHANProject
         public Form1()
         {
             InitializeComponent();
+
+            Form3 loginPage = new Form3();
+            loginPage.ShowDialog();
         }
 
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
@@ -44,5 +49,15 @@ namespace DOVHANProject
             createTaskForm.ShowDialog();
         }
 
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XmlTextReader reader = new XmlTextReader("database.xml");
+
+        }
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Markup;
 
-namespace DOVHANProject
+namespace tasks
 {
     public partial class Form2 : Form
     {

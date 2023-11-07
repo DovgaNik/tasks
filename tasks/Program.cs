@@ -1,4 +1,4 @@
-namespace DOVHANProject
+namespace tasks
 {
     internal static class Program
     {

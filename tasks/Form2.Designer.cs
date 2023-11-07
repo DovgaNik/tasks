@@ -1,4 +1,4 @@
-﻿namespace DOVHANProject
+﻿namespace tasks
 {
     partial class Form2
     {
