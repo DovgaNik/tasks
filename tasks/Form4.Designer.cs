@@ -1,6 +1,6 @@
 ﻿namespace tasks
 {
-    partial class Form3
+    partial class Form4
     {
         /// <summary>
         /// Required designer variable.
@@ -28,90 +28,77 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            label1 = new Label();
+            button2 = new Button();
             label2 = new Label();
             textBox2 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
+            label1 = new Label();
+            textBox1 = new TextBox();
             SuspendLayout();
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(74, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(8, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 20);
-            label1.TabIndex = 1;
-            label1.Text = "User";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(8, 52);
-            label2.Name = "label2";
-            label2.Size = new Size(70, 20);
-            label2.TabIndex = 3;
-            label2.Text = "Password";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(74, 45);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 27);
-            textBox2.TabIndex = 2;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(5, 78);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 4;
-            button1.Text = "Login";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(105, 78);
+            button2.Location = new Point(12, 76);
             button2.Name = "button2";
             button2.Size = new Size(94, 29);
-            button2.TabIndex = 5;
+            button2.TabIndex = 11;
             button2.Text = "Register";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // Form3
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 53);
+            label2.Name = "label2";
+            label2.Size = new Size(70, 20);
+            label2.TabIndex = 9;
+            label2.Text = "Password";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(90, 46);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(125, 27);
+            textBox2.TabIndex = 8;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 20);
+            label1.TabIndex = 7;
+            label1.Text = "User";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(90, 13);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(125, 27);
+            textBox1.TabIndex = 6;
+            // 
+            // Form4
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(210, 119);
+            ClientSize = new Size(253, 120);
             Controls.Add(button2);
-            Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(textBox2);
             Controls.Add(label1);
             Controls.Add(textBox1);
-            Name = "Form3";
-            Text = "Login";
+            Name = "Form4";
+            Text = "Register";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox textBox1;
-        private Label label1;
+        private Button button2;
         private Label label2;
         private TextBox textBox2;
-        private Button button1;
-        private Button button2;
+        private Label label1;
+        private TextBox textBox1;
     }
 }

@@ -5,12 +5,15 @@ namespace tasks
     public partial class Form1 : Form
     {
         List<(string, double, double, byte)> values = new List<(string, double, double, byte)>(); // name, deadline, duration, priority
+        string loggedInUsername;
         public Form1()
         {
             InitializeComponent();
 
             Form3 loginPage = new Form3();
             loginPage.ShowDialog();
+            loggedInUsername = loginPage.GetLoggedInUsername();
+            MessageBox.Show("Logged in as " + loggedInUsername);
         }
 
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
@@ -59,5 +62,6 @@ namespace tasks
             XmlTextReader reader = new XmlTextReader("database.xml");
 
         }
+
     }
 }
