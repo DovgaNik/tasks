@@ -39,6 +39,7 @@
             editToolStripMenuItem = new ToolStripMenuItem();
             removeToolStripMenuItem = new ToolStripMenuItem();
             infoToolStripMenuItem = new ToolStripMenuItem();
+            creatorsToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -77,14 +78,14 @@
             // openToolStripMenuItem
             // 
             openToolStripMenuItem.Name = "openToolStripMenuItem";
-            openToolStripMenuItem.Size = new Size(224, 26);
+            openToolStripMenuItem.Size = new Size(128, 26);
             openToolStripMenuItem.Text = "Open";
             openToolStripMenuItem.Click += openToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(224, 26);
+            saveToolStripMenuItem.Size = new Size(128, 26);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
@@ -118,9 +119,17 @@
             // 
             // infoToolStripMenuItem
             // 
+            infoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { creatorsToolStripMenuItem });
             infoToolStripMenuItem.Name = "infoToolStripMenuItem";
             infoToolStripMenuItem.Size = new Size(49, 24);
             infoToolStripMenuItem.Text = "Info";
+            // 
+            // creatorsToolStripMenuItem
+            // 
+            creatorsToolStripMenuItem.Name = "creatorsToolStripMenuItem";
+            creatorsToolStripMenuItem.Size = new Size(224, 26);
+            creatorsToolStripMenuItem.Text = "Creators";
+            creatorsToolStripMenuItem.Click += creatorsToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -152,5 +161,6 @@
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem openToolStripMenuItem;
         private ToolStripMenuItem infoToolStripMenuItem;
+        private ToolStripMenuItem creatorsToolStripMenuItem;
     }
 }

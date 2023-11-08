@@ -1,5 +1,4 @@
 using System.Xml;
-using System.Xml.Linq;
 
 namespace tasks
 {
@@ -48,6 +47,7 @@ namespace tasks
                 xmlDoc = new XmlDocument();
                 xmlDoc.Load(databaseFilename);
                 XmlNodeList taskNodes = xmlDoc.SelectNodes("/tasks/task");
+                root = xmlDoc.ChildNodes[0] as XmlElement;
 
                 foreach (XmlNode taskNode in taskNodes)
                 {
@@ -161,6 +161,12 @@ namespace tasks
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveXmlDocument();
+        }
+
+        private void creatorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form5 infopage = new Form5();
+            infopage.ShowDialog();
         }
     }
 }
