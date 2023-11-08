@@ -16,6 +16,7 @@ namespace tasks
 
         XmlTextReader reader;
         XmlDocument xmlDoc;
+        string username;
         public Form4()
         {
             InitializeComponent();
@@ -54,7 +55,15 @@ namespace tasks
             xmlDoc.Save("login.xml");
 
             MessageBox.Show("New user added successfully.");
+            username = newUsername;
             Close();
+            return;
+        }
+
+        public string GetUsername() { 
+        
+            return username;
+        
         }
 
     }

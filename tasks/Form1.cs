@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace tasks
 {
@@ -9,7 +9,7 @@ namespace tasks
         List<Task> tasks = new List<Task>(); string loggedInUsername;
         string databaseFilename = "";
         XmlDocument xmlDoc;
-
+        XmlElement root;
 
         //Constructor
         public Form1()
@@ -40,7 +40,7 @@ namespace tasks
 
         }
 
-        
+
         private void LoadTasksFromXml()
         {
             try
@@ -62,13 +62,13 @@ namespace tasks
                     refreshDGV();
 
                 }
-        }
+            }
             catch (FileNotFoundException)
             {
                 InitializeXmlDocument("tasks");
             }
 
-}
+        }
 
 
 
@@ -88,9 +88,8 @@ namespace tasks
         private void InitializeXmlDocument(string element)
         {
             xmlDoc = new XmlDocument();
-            XmlElement root = xmlDoc.CreateElement(element);
+            root = xmlDoc.CreateElement(element);
             xmlDoc.AppendChild(root); // Add the root element to the XmlDocument
-            xmlDoc.Save(databaseFilename); // Save the XmlDocument to the file
         }
 
 
@@ -111,6 +110,12 @@ namespace tasks
             Form2 createTaskForm = new Form2(dataGridView1);
             createTaskForm.ShowDialog();
             tasks.Add(createTaskForm.returnTsk());
+            XmlElement taskel = xmlDoc.CreateElement("task");
+            root.AppendChild(taskel);
+            taskel.AppendChild(xmlDoc.CreateElement("name")).InnerText = createTaskForm.returnTsk().Name;
+            taskel.AppendChild(xmlDoc.CreateElement("timecreated")).InnerText = createTaskForm.returnTsk().TimeCreated.ToString();
+            taskel.AppendChild(xmlDoc.CreateElement("deadline")).InnerText = createTaskForm.returnTsk().Deadline.ToString();
+            taskel.AppendChild(xmlDoc.CreateElement("priority")).InnerText = createTaskForm.returnTsk().Priority.ToString();
             refreshDGV();
             //dataGridView1.Rows.Add(createTaskForm.returnTsk().Name, createTaskForm.returnTsk().TimeCreated, createTaskForm.returnTsk().Deadline, createTaskForm.returnTsk().Priority);
         }
@@ -148,6 +153,11 @@ namespace tasks
             createTaskForm.ShowDialog();
             tasks[selectedRow] = createTaskForm.returnTsk();
             refreshDGV();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveXmlDocument();
         }
     }
 }

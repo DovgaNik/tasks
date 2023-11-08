@@ -95,7 +95,10 @@ namespace tasks
         {
             Form4 regForm = new Form4();
             regForm.ShowDialog();
+            loggedInUsername = regForm.GetUsername();
             refresh();
+            Close();
+            return;
         }
 
         private void button3_Click(object sender, EventArgs e)
