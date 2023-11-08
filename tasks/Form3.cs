@@ -83,7 +83,6 @@ namespace tasks
                     {
                         // Set the loggedInUsername when login is successful
                         loggedInUsername = storedUsername;
-                        MessageBox.Show("Login successful!");
                         this.Close();
                         return; // Exit the method after successful login
                     }
@@ -97,6 +96,17 @@ namespace tasks
             Form4 regForm = new Form4();
             regForm.ShowDialog();
             refresh();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Exit();
+                loggedInUsername = "";
+                Close();
+                return;
+            }
         }
     }
 }

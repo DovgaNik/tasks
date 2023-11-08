@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             dataGridView1 = new DataGridView();
-            name = new DataGridViewTextBoxColumn();
-            time_created = new DataGridViewTextBoxColumn();
-            deadline = new DataGridViewTextBoxColumn();
-            priority = new DataGridViewTextBoxColumn();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             openToolStripMenuItem = new ToolStripMenuItem();
@@ -49,7 +46,6 @@
             // 
             dataGridView1.BackgroundColor = SystemColors.Window;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { name, time_created, deadline, priority });
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.Location = new Point(12, 31);
             dataGridView1.MultiSelect = false;
@@ -59,34 +55,6 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(1090, 503);
             dataGridView1.TabIndex = 0;
-            // 
-            // name
-            // 
-            name.HeaderText = "Name";
-            name.MinimumWidth = 6;
-            name.Name = "name";
-            name.Width = 512;
-            // 
-            // time_created
-            // 
-            time_created.HeaderText = "Time created";
-            time_created.MinimumWidth = 6;
-            time_created.Name = "time_created";
-            time_created.Width = 200;
-            // 
-            // deadline
-            // 
-            deadline.HeaderText = "Deadline";
-            deadline.MinimumWidth = 6;
-            deadline.Name = "deadline";
-            deadline.Width = 200;
-            // 
-            // priority
-            // 
-            priority.HeaderText = "Priority";
-            priority.MinimumWidth = 6;
-            priority.Name = "priority";
-            priority.Width = 125;
             // 
             // menuStrip1
             // 
@@ -117,7 +85,6 @@
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.Size = new Size(128, 26);
             saveToolStripMenuItem.Text = "Save";
-            saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // tasksToolStripMenuItem
             // 
@@ -154,6 +121,7 @@
             ClientSize = new Size(1105, 539);
             Controls.Add(dataGridView1);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Project Nikita DOVHAN Bogdan NEAGU";
@@ -172,10 +140,6 @@
         private ToolStripMenuItem createToolStripMenuItem;
         private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem removeToolStripMenuItem;
-        private DataGridViewTextBoxColumn name;
-        private DataGridViewTextBoxColumn time_created;
-        private DataGridViewTextBoxColumn deadline;
-        private DataGridViewTextBoxColumn priority;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem openToolStripMenuItem;

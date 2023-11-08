@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4));
             button2 = new Button();
             label2 = new Label();
             textBox2 = new TextBox();
@@ -37,9 +38,9 @@
             // 
             // button2
             // 
-            button2.Location = new Point(12, 76);
+            button2.Location = new Point(148, 87);
             button2.Name = "button2";
-            button2.Size = new Size(94, 29);
+            button2.Size = new Size(146, 59);
             button2.TabIndex = 11;
             button2.Text = "Register";
             button2.UseVisualStyleBackColor = true;
@@ -48,7 +49,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 53);
+            label2.Location = new Point(8, 48);
             label2.Name = "label2";
             label2.Size = new Size(70, 20);
             label2.TabIndex = 9;
@@ -56,15 +57,15 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(90, 46);
+            textBox2.Location = new Point(84, 45);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 27);
+            textBox2.Size = new Size(339, 27);
             textBox2.TabIndex = 8;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 20);
+            label1.Location = new Point(40, 15);
             label1.Name = "label1";
             label1.Size = new Size(38, 20);
             label1.TabIndex = 7;
@@ -72,21 +73,22 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(90, 13);
+            textBox1.Location = new Point(84, 12);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
+            textBox1.Size = new Size(339, 27);
             textBox1.TabIndex = 6;
             // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(253, 120);
+            ClientSize = new Size(435, 158);
             Controls.Add(button2);
             Controls.Add(label2);
             Controls.Add(textBox2);
             Controls.Add(label1);
             Controls.Add(textBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form4";
             Text = "Register";
             ResumeLayout(false);
