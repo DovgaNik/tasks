@@ -54,6 +54,7 @@ namespace tasks
             xmlDoc.Save("login.xml");
 
             MessageBox.Show("New user added successfully.");
+            Close();
         }
 
     }

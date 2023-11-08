@@ -5,10 +5,13 @@ namespace tasks
 {
     public partial class Form1 : Form
     {
+        // Global variables of the form
         List<Task> tasks = new List<Task>(); string loggedInUsername;
         string databaseFilename = "";
         XmlDocument xmlDoc;
 
+
+        //Constructor
         public Form1()
         {
             InitializeComponent();
@@ -20,25 +23,24 @@ namespace tasks
                 loggedInUsername = loginPage.GetLoggedInUsername();
                 if (loggedInUsername != null)
                 {
-                    MessageBox.Show("Logged in as " + loggedInUsername);
+                    //MessageBox.Show("Logged in as " + loggedInUsername);
                     databaseFilename = loggedInUsername + ".xml";
+                    LoadTasksFromXml();
                     break;
                 }
                 else if (loggedInUsername == "")
                 {
-                    System.Windows.Forms.Application.Exit();
+                    Application.Exit();
                 }
 
             }
-
-
-            LoadTasksFromXml();
 
             // Bind tasks list to the DataGridView
             //dataGridView1.DataSource = tasks;
 
         }
 
+        
         private void LoadTasksFromXml()
         {
             try
@@ -57,13 +59,16 @@ namespace tasks
                     task.Priority = byte.Parse(taskNode.SelectSingleNode("priority").InnerText);
 
                     tasks.Add(task);
+                    refreshDGV();
+
                 }
-            }
-            catch (Exception ex)
-            {
-                InitializeXmlDocument("task");
-            }
         }
+            catch (FileNotFoundException)
+            {
+                InitializeXmlDocument("tasks");
+            }
+
+}
 
 
 
@@ -83,11 +88,10 @@ namespace tasks
         private void InitializeXmlDocument(string element)
         {
             xmlDoc = new XmlDocument();
-
             XmlElement root = xmlDoc.CreateElement(element);
-            xmlDoc.AppendChild(root);
+            xmlDoc.AppendChild(root); // Add the root element to the XmlDocument
+            xmlDoc.Save(databaseFilename); // Save the XmlDocument to the file
         }
-
 
 
         //buttons
@@ -96,21 +100,26 @@ namespace tasks
             XmlTextReader reader = new XmlTextReader("database.xml");
         }
 
+        private void refreshDGV()
+        {
+            dataGridView1.DataSource = typeof(List<>);
+            dataGridView1.DataSource = tasks;
+        }
 
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form2 createTaskForm = new Form2(dataGridView1);
             createTaskForm.ShowDialog();
             tasks.Add(createTaskForm.returnTsk());
-            dataGridView1.DataSource = typeof(List<>);
-            dataGridView1.DataSource = tasks;
+            refreshDGV();
             //dataGridView1.Rows.Add(createTaskForm.returnTsk().Name, createTaskForm.returnTsk().TimeCreated, createTaskForm.returnTsk().Deadline, createTaskForm.returnTsk().Priority);
         }
 
 
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
+            tasks.RemoveAt(dataGridView1.SelectedRows[0].Index);
+            refreshDGV();
         }
 
 
@@ -135,10 +144,10 @@ namespace tasks
                     break;
             }
 
-            //Form2 createTaskForm = new Form2(dataGridView1, true, dataGridView1.Rows[selectedRow].Cells[0].Value.ToString(), DateTime.Parse(dataGridView1.Rows[selectedRow].Cells[2].Value.ToString()), priority);
             Form2 createTaskForm = new Form2(dataGridView1, tasks[selectedRow], true, tasks[selectedRow].Name, tasks[selectedRow].Deadline, tasks[selectedRow].Priority);
             createTaskForm.ShowDialog();
-            tasks.Add(createTaskForm.returnTsk());
+            tasks[selectedRow] = createTaskForm.returnTsk();
+            refreshDGV();
         }
     }
 }
