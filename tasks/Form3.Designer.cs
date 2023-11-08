@@ -67,6 +67,7 @@
             // 
             textBox2.Location = new Point(74, 45);
             textBox2.Name = "textBox2";
+            textBox2.PasswordChar = '*';
             textBox2.Size = new Size(468, 27);
             textBox2.TabIndex = 2;
             // 
@@ -105,6 +106,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(553, 138);
+            ControlBox = false;
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);

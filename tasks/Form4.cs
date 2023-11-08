@@ -30,10 +30,15 @@ namespace tasks
         {
             string newUsername = textBox1.Text;
             string newPassword = textBox2.Text;
+            string confirmPassword = textBox3.Text;
 
-            if (string.IsNullOrWhiteSpace(newUsername) || string.IsNullOrWhiteSpace(newPassword))
+            if (string.IsNullOrWhiteSpace(newUsername) || string.IsNullOrWhiteSpace(newPassword) || string.IsNullOrWhiteSpace(confirmPassword))
             {
-                MessageBox.Show("Please enter both username and password for the new user.");
+                MessageBox.Show("Please enter username, password and confirmation of password for the new user.", "Not all fields completed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (newPassword != confirmPassword){
+                MessageBox.Show("The password and cofnirmation don't match, please try again.", "Passwords don't match", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -54,16 +59,17 @@ namespace tasks
             xmlDoc.DocumentElement.AppendChild(newUser);
             xmlDoc.Save("login.xml");
 
-            MessageBox.Show("New user added successfully.");
+            MessageBox.Show("New user added successfully.", "Success!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             username = newUsername;
             Close();
             return;
         }
 
-        public string GetUsername() { 
-        
+        public string GetUsername()
+        {
+
             return username;
-        
+
         }
 
     }

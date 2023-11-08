@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Security.Cryptography;
 using System.Data.SqlTypes;
+using System.Runtime.InteropServices;
 
 namespace tasks
 {
@@ -88,17 +89,19 @@ namespace tasks
                     }
                 }
             }
-            MessageBox.Show("Login unsuccessful!");
+            MessageBox.Show("Login unsuccessful!", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Form4 regForm = new Form4();
             regForm.ShowDialog();
-            loggedInUsername = regForm.GetUsername();
-            refresh();
-            Close();
-            return;
+            if (regForm.GetUsername() != null) {
+                loggedInUsername = regForm.GetUsername();
+                refresh();
+                Close();
+                return;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

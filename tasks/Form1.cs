@@ -23,7 +23,7 @@ namespace tasks
                 loggedInUsername = loginPage.GetLoggedInUsername();
                 if (loggedInUsername != null)
                 {
-                    //MessageBox.Show("Logged in as " + loggedInUsername);
+                    MessageBox.Show("Logged in as " + loggedInUsername, "Successful login", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     databaseFilename = loggedInUsername + ".xml";
                     LoadTasksFromXml();
                     break;
@@ -77,11 +77,14 @@ namespace tasks
             try
             {
                 xmlDoc.Save(databaseFilename);
-                MessageBox.Show("Data saved successfully.");
+                MessageBox.Show("Data saved successfully.", "Success!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error saving data: " + ex.Message);
+                if (MessageBox.Show("Error saving data: " + ex.Message, "Error!!!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                {
+                    SaveXmlDocument();
+                }
             }
         }
 

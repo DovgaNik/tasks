@@ -34,11 +34,13 @@
             textBox2 = new TextBox();
             label1 = new Label();
             textBox1 = new TextBox();
+            label3 = new Label();
+            textBox3 = new TextBox();
             SuspendLayout();
             // 
             // button2
             // 
-            button2.Location = new Point(148, 87);
+            button2.Location = new Point(170, 111);
             button2.Name = "button2";
             button2.Size = new Size(146, 59);
             button2.TabIndex = 11;
@@ -49,7 +51,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(8, 48);
+            label2.Location = new Point(65, 48);
             label2.Name = "label2";
             label2.Size = new Size(70, 20);
             label2.TabIndex = 9;
@@ -57,15 +59,16 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(84, 45);
+            textBox2.Location = new Point(141, 45);
             textBox2.Name = "textBox2";
+            textBox2.PasswordChar = '*';
             textBox2.Size = new Size(339, 27);
             textBox2.TabIndex = 8;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(40, 15);
+            label1.Location = new Point(97, 15);
             label1.Name = "label1";
             label1.Size = new Size(38, 20);
             label1.TabIndex = 7;
@@ -73,16 +76,35 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(84, 12);
+            textBox1.Location = new Point(141, 12);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(339, 27);
             textBox1.TabIndex = 6;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(6, 81);
+            label3.Name = "label3";
+            label3.Size = new Size(129, 20);
+            label3.TabIndex = 13;
+            label3.Text = "Confirm password";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(141, 78);
+            textBox3.Name = "textBox3";
+            textBox3.PasswordChar = '*';
+            textBox3.Size = new Size(339, 27);
+            textBox3.TabIndex = 12;
             // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(435, 158);
+            ClientSize = new Size(488, 179);
+            Controls.Add(label3);
+            Controls.Add(textBox3);
             Controls.Add(button2);
             Controls.Add(label2);
             Controls.Add(textBox2);
@@ -102,5 +124,7 @@
         private TextBox textBox2;
         private Label label1;
         private TextBox textBox1;
+        private Label label3;
+        private TextBox textBox3;
     }
 }
