@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Xml;
-using System.Security.Cryptography;
-using System.Data.SqlTypes;
-using System.Runtime.InteropServices;
 
 namespace tasks
 {
@@ -96,7 +85,8 @@ namespace tasks
         {
             Form4 regForm = new Form4();
             regForm.ShowDialog();
-            if (regForm.GetUsername() != null) {
+            if (regForm.GetUsername() != null)
+            {
                 loggedInUsername = regForm.GetUsername();
                 refresh();
                 Close();

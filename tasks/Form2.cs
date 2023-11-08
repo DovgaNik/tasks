@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Markup;
+﻿using System.Runtime.InteropServices;
 
 namespace tasks
 {
@@ -17,7 +7,7 @@ namespace tasks
         Task tasks;
         int selectedRow = 0;
         bool editmode = false;
-      
+
         public Form2(DataGridView dgv, [Optional] Task tasks_, [Optional] bool editMode, [Optional] string task, [Optional] DateTime dt, [Optional] byte priority)
         {
             InitializeComponent();
