@@ -28,10 +28,9 @@ namespace tasks
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {
-                // ComputeHash - returns byte array
+
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
 
-                // Convert byte array to a string
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
                 {
@@ -43,14 +42,13 @@ namespace tasks
 
         public static bool VerifyPassword(string enteredPassword, string storedHash)
         {
-            // Hash the inputted password and compare it to the stored hash
             var hashOfEnteredPassword = HashPassword(enteredPassword);
             return hashOfEnteredPassword.Equals(storedHash);
         }
 
         public string GetLoggedInUsername()
         {
-            return loggedInUsername; // Access the logged-in username
+            return loggedInUsername;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -71,10 +69,9 @@ namespace tasks
 
                     if (inputUsername == storedUsername && VerifyPassword(inputPassword, storedPassword))
                     {
-                        // Set the loggedInUsername when login is successful
                         loggedInUsername = storedUsername;
                         this.Close();
-                        return; // Exit the method after successful login
+                        return;
                     }
                 }
             }

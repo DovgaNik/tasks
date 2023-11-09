@@ -4,13 +4,11 @@ namespace tasks
 {
     public partial class Form1 : Form
     {
-        // Global variables of the form
         List<Task> tasks = new List<Task>(); string loggedInUsername;
         string databaseFilename = "";
         XmlDocument xmlDoc;
         XmlElement root;
 
-        //Constructor
         public Form1()
         {
             InitializeComponent();
@@ -34,9 +32,6 @@ namespace tasks
 
             }
 
-            // Bind tasks list to the DataGridView
-            //dataGridView1.DataSource = tasks;
-
         }
 
 
@@ -56,7 +51,7 @@ namespace tasks
                     task.Name = taskNode.SelectSingleNode("name").InnerText;
                     task.TimeCreated = DateTime.Parse(taskNode.SelectSingleNode("timecreated").InnerText);
                     task.Deadline = DateTime.Parse(taskNode.SelectSingleNode("deadline").InnerText);
-                    task.Priority = byte.Parse(taskNode.SelectSingleNode("priority").InnerText);
+                    task.Priority = taskNode.SelectSingleNode("priority").InnerText;
 
                     tasks.Add(task);
                     refreshDGV();
@@ -76,6 +71,19 @@ namespace tasks
         {
             try
             {
+                xmlDoc = new XmlDocument();
+                root = xmlDoc.CreateElement("tasks");
+                xmlDoc.AppendChild(root);
+                foreach (Task task in tasks)
+                {
+                    XmlElement taskel = xmlDoc.CreateElement("task");
+                    taskel.AppendChild(xmlDoc.CreateElement("name")).InnerText = task.Name;
+                    taskel.AppendChild(xmlDoc.CreateElement("timecreated")).InnerText = task.TimeCreated.ToString();
+                    taskel.AppendChild(xmlDoc.CreateElement("deadline")).InnerText = task.Deadline.ToString();
+                    taskel.AppendChild(xmlDoc.CreateElement("priority")).InnerText = task.Priority.ToString();
+                    root.AppendChild(taskel);
+                }
+
                 xmlDoc.Save(databaseFilename);
                 MessageBox.Show("Data saved successfully.", "Success!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -92,7 +100,7 @@ namespace tasks
         {
             xmlDoc = new XmlDocument();
             root = xmlDoc.CreateElement(element);
-            xmlDoc.AppendChild(root); // Add the root element to the XmlDocument
+            xmlDoc.AppendChild(root);
         }
 
 
@@ -113,14 +121,9 @@ namespace tasks
             Form2 createTaskForm = new Form2(dataGridView1);
             createTaskForm.ShowDialog();
             tasks.Add(createTaskForm.returnTsk());
-            XmlElement taskel = xmlDoc.CreateElement("task");
-            root.AppendChild(taskel);
-            taskel.AppendChild(xmlDoc.CreateElement("name")).InnerText = createTaskForm.returnTsk().Name;
-            taskel.AppendChild(xmlDoc.CreateElement("timecreated")).InnerText = createTaskForm.returnTsk().TimeCreated.ToString();
-            taskel.AppendChild(xmlDoc.CreateElement("deadline")).InnerText = createTaskForm.returnTsk().Deadline.ToString();
-            taskel.AppendChild(xmlDoc.CreateElement("priority")).InnerText = createTaskForm.returnTsk().Priority.ToString();
+
             refreshDGV();
-            //dataGridView1.Rows.Add(createTaskForm.returnTsk().Name, createTaskForm.returnTsk().TimeCreated, createTaskForm.returnTsk().Deadline, createTaskForm.returnTsk().Priority);
+
         }
 
 
@@ -135,22 +138,7 @@ namespace tasks
         {
             int selectedRow = dataGridView1.SelectedRows[0].Index;
             int selectedColumn = dataGridView1.SelectedCells[0].ColumnIndex;
-            byte priority = 0;
-            switch (dataGridView1.Rows[selectedRow].Cells[3].Value.ToString())
-            {
-                case "Low":
-                    priority = 0;
-                    break;
-                case "Normal":
-                    priority = 1;
-                    break;
-                case "High":
-                    priority = 2;
-                    break;
-                case "Urgent":
-                    priority = 3;
-                    break;
-            }
+            string priority = dataGridView1.Rows[selectedRow].Cells[3].Value.ToString();
 
             Form2 createTaskForm = new Form2(dataGridView1, tasks[selectedRow], true, tasks[selectedRow].Name, tasks[selectedRow].Deadline, tasks[selectedRow].Priority);
             createTaskForm.ShowDialog();

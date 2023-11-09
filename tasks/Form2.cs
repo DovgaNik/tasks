@@ -8,7 +8,7 @@ namespace tasks
         int selectedRow = 0;
         bool editmode = false;
 
-        public Form2(DataGridView dgv, [Optional] Task tasks_, [Optional] bool editMode, [Optional] string task, [Optional] DateTime dt, [Optional] byte priority)
+        public Form2(DataGridView dgv, [Optional] Task tasks_, [Optional] bool editMode, [Optional] string task, [Optional] DateTime dt, [Optional] string priority)
         {
             InitializeComponent();
             tasks = tasks_;
@@ -18,17 +18,20 @@ namespace tasks
                 dateTimePicker1.Value = dt;
                 switch (priority)
                 {
-                    case 0:
+                    case "Low":
                         radioButton1.Checked = true;
                         break;
-                    case 1:
+                    case "Normal":
                         radioButton2.Checked = true;
                         break;
-                    case 2:
+                    case "High":
                         radioButton3.Checked = true;
                         break;
-                    case 3:
+                    case "Urgent":
                         radioButton4.Checked = true;
+                        break;
+                    case "None":
+                        radioButton5.Checked = true;
                         break;
                 }
                 textBox1.Text = task;
@@ -38,38 +41,60 @@ namespace tasks
                 editmode = editMode;
                 this.Name = "Edit Task";
             }
+            else
+            {
+                radioButton5.Checked = true;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close(); // Close the form
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            byte priority = 0;
+            string priority = "None";
             if (radioButton1.Checked)
             {
-                priority = 1;
+                priority = "Low";
             }
             else if (radioButton2.Checked)
             {
-                priority = 2;
+                priority = "Normal";
             }
             else if (radioButton3.Checked)
             {
-                priority = 3;
+                priority = "High";
+            }
+            else if (radioButton4.Checked)
+            {
+                priority = "Urgent";
+            }
+            else if (radioButton5.Checked)
+            {
+                priority = "None";
             }
             else
             {
-                priority = 4;
+                MessageBox.Show("You haven't selected any priority!", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            if (DateTime.Compare(dateTimePicker1.Value, DateTime.Now) < 0)
+            {
+                MessageBox.Show("You can't set a deadline in the past!", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (textBox1.Text == "")
+            {
+                MessageBox.Show("You haven't entered a task name!", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (editmode)
             {
-                //datagrid.Rows[selectedRow].Cells[0].Value = textBox1.Text;
-                //datagrid.Rows[selectedRow].Cells[1].Value = DateTime.Now.ToString();
-                //datagrid.Rows[selectedRow].Cells[2].Value = dateTimePicker1.Value;
-                //datagrid.Rows[selectedRow].Cells[3].Value = priority;
 
                 Task task = new Task();
                 task.Name = textBox1.Text;
@@ -79,8 +104,6 @@ namespace tasks
                 task.Priority = priority;
                 tasks = task;
 
-
-                //(textBox1.Text, DateTime.Now.ToString(), dateTimePicker1.Value, priority);
             }
             else
             {
@@ -92,7 +115,7 @@ namespace tasks
                 task.Priority = priority;
                 tasks = task;
             }
-            this.Close(); // Close the form
+            this.Close();
         }
 
         public Task returnTsk()

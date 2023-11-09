@@ -34,20 +34,16 @@ namespace tasks
                 return;
             }
 
-            // Create a new user element
             XmlElement newUser = xmlDoc.CreateElement("user");
 
-            // Create username and password elements for the new user
             XmlElement usernameElement = xmlDoc.CreateElement("username");
             usernameElement.InnerText = newUsername;
             XmlElement passwordElement = xmlDoc.CreateElement("password");
             passwordElement.InnerText = Form3.HashPassword(newPassword);
 
-            // Add username and password elements to the new user element
             newUser.AppendChild(usernameElement);
             newUser.AppendChild(passwordElement);
 
-            // Add the new user element to the XML document
             xmlDoc.DocumentElement.AppendChild(newUser);
             xmlDoc.Save("login.xml");
 

@@ -32,6 +32,7 @@
             textBox1 = new TextBox();
             dateTimePicker1 = new DateTimePicker();
             groupBox1 = new GroupBox();
+            radioButton5 = new RadioButton();
             radioButton4 = new RadioButton();
             radioButton3 = new RadioButton();
             radioButton2 = new RadioButton();
@@ -54,13 +55,15 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(542, 337);
+            dateTimePicker1.CustomFormat = "";
+            dateTimePicker1.Location = new Point(541, 337);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(262, 27);
+            dateTimePicker1.Size = new Size(263, 27);
             dateTimePicker1.TabIndex = 1;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(radioButton5);
             groupBox1.Controls.Add(radioButton4);
             groupBox1.Controls.Add(radioButton3);
             groupBox1.Controls.Add(radioButton2);
@@ -71,6 +74,17 @@
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "Priority";
+            // 
+            // radioButton5
+            // 
+            radioButton5.AutoSize = true;
+            radioButton5.Location = new Point(6, 269);
+            radioButton5.Name = "radioButton5";
+            radioButton5.Size = new Size(66, 24);
+            radioButton5.TabIndex = 4;
+            radioButton5.TabStop = true;
+            radioButton5.Text = "None";
+            radioButton5.UseVisualStyleBackColor = true;
             // 
             // radioButton4
             // 
@@ -128,7 +142,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(467, 344);
+            label2.Location = new Point(466, 342);
             label2.Name = "label2";
             label2.Size = new Size(69, 20);
             label2.TabIndex = 5;
@@ -188,5 +202,6 @@
         private Label label2;
         private Button button1;
         private Button button2;
+        private RadioButton radioButton5;
     }
 }
