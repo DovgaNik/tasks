@@ -18,9 +18,19 @@ namespace tasks
         private void refresh()
         {
             string URLString = "login.xml";
-            reader = new XmlTextReader(URLString);
-            xmlDoc = new XmlDocument();
-            xmlDoc.Load(URLString);
+            try
+            {
+                reader = new XmlTextReader(URLString);
+                xmlDoc = new XmlDocument();
+                xmlDoc.Load(URLString);
+            }
+            catch (Exception)
+            {
+                xmlDoc = new XmlDocument();
+                XmlElement root = xmlDoc.CreateElement("login");
+                xmlDoc.AppendChild(root);
+                xmlDoc.Save(URLString);
+            }
 
         }
 
