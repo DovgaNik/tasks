@@ -41,6 +41,7 @@
             label2 = new Label();
             button1 = new Button();
             button2 = new Button();
+            dateTimePicker2 = new DateTimePicker();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,10 +56,11 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.CustomFormat = "";
-            dateTimePicker1.Location = new Point(541, 337);
+            dateTimePicker1.CustomFormat = "MMM/d/yyyy";
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(561, 337);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(263, 27);
+            dateTimePicker1.Size = new Size(126, 27);
             dateTimePicker1.TabIndex = 1;
             // 
             // groupBox1
@@ -142,7 +144,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(466, 342);
+            label2.Location = new Point(486, 342);
             label2.Name = "label2";
             label2.Size = new Size(69, 20);
             label2.TabIndex = 5;
@@ -150,7 +152,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(724, 397);
+            button1.Location = new Point(711, 397);
             button1.Name = "button1";
             button1.Size = new Size(94, 36);
             button1.TabIndex = 6;
@@ -168,11 +170,22 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.CustomFormat = "h:m:s tt";
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.Location = new Point(693, 337);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.ShowUpDown = true;
+            dateTimePicker2.Size = new Size(111, 27);
+            dateTimePicker2.TabIndex = 8;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(830, 445);
+            ClientSize = new Size(817, 445);
+            Controls.Add(dateTimePicker2);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label2);
@@ -203,5 +216,6 @@
         private Button button1;
         private Button button2;
         private RadioButton radioButton5;
+        private DateTimePicker dateTimePicker2;
     }
 }

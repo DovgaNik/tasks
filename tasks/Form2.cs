@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace tasks
 {
@@ -93,28 +94,17 @@ namespace tasks
                 return;
             }
 
-            if (editmode)
-            {
+            Task task = new Task();
+            task.Name = textBox1.Text;
 
-                Task task = new Task();
-                task.Name = textBox1.Text;
+            task.TimeCreated = DateTime.Now;
 
-                task.TimeCreated = DateTime.Now;
-                task.Deadline = dateTimePicker1.Value;
-                task.Priority = priority;
-                tasks = task;
 
-            }
-            else
-            {
-                Task task = new Task();
-                task.Name = textBox1.Text;
 
-                task.TimeCreated = DateTime.Now;
-                task.Deadline = dateTimePicker1.Value;
-                task.Priority = priority;
-                tasks = task;
-            }
+            task.Deadline = dateTimePicker1.Value.Date + dateTimePicker2.Value.TimeOfDay;
+            task.Priority = priority;
+            tasks = task;
+
             this.Close();
         }
 
