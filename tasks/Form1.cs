@@ -103,13 +103,6 @@ namespace tasks
             xmlDoc.AppendChild(root);
         }
 
-
-        //buttons
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XmlTextReader reader = new XmlTextReader("database.xml");
-        }
-
         private void refreshDGV()
         {
             dataGridView1.DataSource = typeof(List<>);
@@ -123,29 +116,38 @@ namespace tasks
             tasks.Add(createTaskForm.returnTsk());
 
             refreshDGV();
+            SaveXmlDocument();
 
         }
 
 
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tasks.RemoveAt(dataGridView1.SelectedRows[0].Index);
-            refreshDGV();
+            try
+            {
+                tasks.RemoveAt(dataGridView1.SelectedRows[0].Index);
+                refreshDGV();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("You haven't selected any task!", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
-            { 
-            int selectedRow = dataGridView1.SelectedRows[0].Index;
-            int selectedColumn = dataGridView1.SelectedCells[0].ColumnIndex;
-            string priority = dataGridView1.Rows[selectedRow].Cells[3].Value.ToString();
+            {
+                int selectedRow = dataGridView1.SelectedRows[0].Index;
+                int selectedColumn = dataGridView1.SelectedCells[0].ColumnIndex;
+                string priority = dataGridView1.Rows[selectedRow].Cells[3].Value.ToString();
 
-            Form2 createTaskForm = new Form2(dataGridView1, tasks[selectedRow], true, tasks[selectedRow].Name, tasks[selectedRow].Deadline, tasks[selectedRow].Priority);
-            createTaskForm.ShowDialog();
-            tasks[selectedRow] = createTaskForm.returnTsk();
-            refreshDGV();
+                Form2 createTaskForm = new Form2(dataGridView1, tasks[selectedRow], true, tasks[selectedRow].Name, tasks[selectedRow].Deadline, tasks[selectedRow].Priority);
+                createTaskForm.ShowDialog();
+                tasks[selectedRow] = createTaskForm.returnTsk();
+                refreshDGV();
+                SaveXmlDocument();
             }
             catch (Exception)
             {
