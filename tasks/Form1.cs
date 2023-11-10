@@ -136,6 +136,8 @@ namespace tasks
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            { 
             int selectedRow = dataGridView1.SelectedRows[0].Index;
             int selectedColumn = dataGridView1.SelectedCells[0].ColumnIndex;
             string priority = dataGridView1.Rows[selectedRow].Cells[3].Value.ToString();
@@ -144,6 +146,11 @@ namespace tasks
             createTaskForm.ShowDialog();
             tasks[selectedRow] = createTaskForm.returnTsk();
             refreshDGV();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("You haven't selected any task!", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
